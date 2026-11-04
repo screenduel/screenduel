@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Add me on Screen Duel</title>
+  <meta name="description" content="Tap to add a friend on Screen Duel.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .who { font-size: 22px; font-weight: 700; margin: 4px 0 20px; }
+    .button { display: block; text-align: center; font-weight: 700; text-decoration: none; padding: 15px; border-radius: 14px; margin: 12px 0; }
+    .primary { background: var(--accent); color: #fff; }
+    .secondary { border: 2px solid var(--line); color: var(--text); }
+    ol { padding-left: 22px; color: var(--muted); }
+  </style>
+</head>
+<body>
+<main>
+  <header><a class="brand" href="./">Screen Duel</a></header>
+
+  <h1>Add me on Screen Duel</h1>
+  <p class="who" id="who">Cut down your screen time with a friend.</p>
+
+  <a class="button primary" id="open" href="screenduel://add">Open in Screen Duel</a>
+  <a class="button secondary" href="https://testflight.apple.com/join/RnVb8Rfv">Get the app</a>
+
+  <h2>New to Screen Duel?</h2>
+  <ol>
+    <li>Tap <strong>Get the app</strong> and install it.</li>
+    <li>Make your account.</li>
+    <li>Come back to this page and tap <strong>Open in Screen Duel</strong>.</li>
+  </ol>
+
+  <footer>
+    <a href="privacy">Privacy Policy</a>
+    <a href="terms">Terms of Use</a>
+  </footer>
+</main>
+<script>
+  // The username from the link (?u=jeremy), with only the characters usernames can have.
+  var name = (new URLSearchParams(location.search).get("u") || "").toLowerCase().replace(/[^a-z0-9_]/g, "");
+  if (name) {
+    document.getElementById("who").textContent = "@" + name + " wants to be your friend.";
+    document.getElementById("open").href = "screenduel://add?u=" + name;
+  }
+</script>
+</body>
+</html>
